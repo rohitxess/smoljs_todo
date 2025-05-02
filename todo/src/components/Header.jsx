@@ -1,6 +1,8 @@
 
 export function Header () {
     return (
-        <header></header>
+        <header>
+            <h1>You have # open tasks</h1>
+        </header>
     )
 }
