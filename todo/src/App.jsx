@@ -5,15 +5,22 @@ import './App.css'
 import { Header } from './components/Header'
 import { Tabs } from './components/Tabs'
 import { TodoCard } from './components/TodoCard'
+import { TodoList } from './components/TodoList'
 
 function App() {
-  const [count, setCount] = useState(0)
+  //creating an array of objects 
+  const todos = [
+    {input: "hello! add your first todo!", complete: true},
+    {input: "hello! add your second todo!", complete: false},
+    {input: "hello! add your second todo!", complete: true},
+    {input: "hello! add your third todo!", complete: false}]
 
   return (
     <>
-      <Header />
-      <Tabs />
-      <TodoCard />
+      <Header todos = {todos} />
+      <Tabs todos = {todos}/>
+      <TodoList todos = {todos} /> 
+      <TodoCard todos = {todos}/>
     </>
   )
 }
