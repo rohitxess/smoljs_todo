@@ -33,6 +33,7 @@ function App() {
     completedTodo['complete'] = true //update the status 
     newTodoList[index] = completedTodo //
     setTodos(newTodoList)
+    handleSaveData(newTodoList)
   }
 
   function handleDeleteTodo(index){
@@ -41,10 +42,19 @@ function App() {
     })
 
     setTodos(newTodoList)
+    handleSaveData(newTodoList)
+  }
+  
+  function handleSaveData(currTodos) {
+    localStorage.setItem('todo-app', JSON.stringify({ todos: currTodos})) // set item takes one key and values/object 
   }
 
   useEffect(() => {
-
+    if (!localStorage || !localStorage.getItem('todo-app')) {
+      return
+    }
+    let db = JSON.parse(localStorage.getItem('todo-app'))
+    setTodos(db.todos)
   },[])
   
   return (

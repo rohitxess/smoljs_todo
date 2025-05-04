@@ -13,7 +13,7 @@ export function TodoList(props) {
             todos.filter(val => !val.complete)
     return (
        <>
-        {filterTodoList.map((todos, todoIndex, handledTodoList) => {
+        {filterTodoList.map((todos, todoIndex) => {
             return (
                 <TodoCard key={todoIndex} 
                 todoIndex={todoIndex}
