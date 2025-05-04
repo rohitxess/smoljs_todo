@@ -1,9 +1,11 @@
+import { useState } from "react"
 import { TodoCard } from "./TodoCard"
 
 export function TodoList(props) {
-    const  { todos } = props
+    const  { todos, selectedTab } = props
+   
+    const tab = selectedTab;
 
-    const tab = 'All'
     const filterTodoList = tab === 'All' ?
         todos: 
         tab  === 'Completed'?
@@ -11,9 +13,12 @@ export function TodoList(props) {
             todos.filter(val => !val.complete)
     return (
        <>
-        {filterTodoList.map((todo, todoIndex) => {
+        {filterTodoList.map((todos, todoIndex, handledTodoList) => {
             return (
-                <TodoCard key={todoIndex} todoIndex={todoIndex} {...props} />
+                <TodoCard key={todoIndex} 
+                todoIndex={todoIndex}
+                {...props}
+                todos={todos} />
             )
         })}
        </>
